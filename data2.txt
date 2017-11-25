@@ -1,0 +1,17 @@
+5
+Gender Male Female
+CarOwnership 0 1 2
+TraveCost($)/km Cheap Standard Expensive
+IncomeLevel Low Medium High
+TransportationMode Bus Train Car
+10
+Male 0 Cheap Low Bus
+Male 1 Cheap Medium Bus
+Female 1 Cheap Medium Train
+Female 0 Cheap Low Bus
+Male 1 Cheap Medium Bus
+Male 0 Standard Medium Train
+Female 1 Standard Medium Train
+Female 1 Expensive High Car
+Male 2 Expensive Medium Car
+Female 2 Expensive High Car

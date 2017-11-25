@@ -1,0 +1,18 @@
+6
+Name Sarah Dana Alex Annie Emilie Peter John Kartie
+Hair Vang Nau Do
+Height Cao T.Binh Thap
+Weight Nhe T.Binh Nang
+Creame Co Khong
+Answer Chay Khong
+8
+Sarah Vang T.Binh Nhe Khong Chay
+Dana Vang Cao T.Binh Co Khong
+Alex Nau Thap T.Binh Co Khong
+Annie Vang Thap T.Binh Khong Chay
+Emilie Do T.Binh Nang Khong Chay
+Peter Nau Cao Nang Khong Khong
+John Nau T.Binh Nang Khong Khong
+Kartie Vang Thap Nhe Co Khong
+1
+Toan Do T.Binh T.Binh Khong Khong
