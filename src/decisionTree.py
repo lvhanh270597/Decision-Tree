@@ -3,7 +3,7 @@ import math
 import random
 from graphics import *
 
-WX = 500
+WX = 1000
 WY = 200
 e = 0.000001
 
@@ -161,7 +161,7 @@ def travelTheTree(tree, s):
         print(s + " ==> " + tree.name)
         return 1
     t = s
-    if len(s) > 0: t += " and "        
+    if len(s) > 0: t += "and "        
     t += "(" + tree.name    
     max_height = 0
     for c in tree.children.keys():
@@ -224,19 +224,27 @@ def draw(win, node, top, L, R, h, a, color):
 
             center = Point((I.getX() + I1.getX()) / 2, (I.getY() + I1.getY()) / 2)
             message = Text(center, keys[i])
+            message.setTextColor("red")
             message.draw(win)
             
             line.draw(win)
 
-    m = min(h / 2, (L + R) / 2)    
-    pa = Point(I.getX() - m, top)
-    pb = Point(I.getX() + m, bottom)
+    m = (h / 2) / 5
+    m *= len(node.name) + 1
+    pa = Point(I.getX() - m, top + 5)
+    pb = Point(I.getX() + m, bottom - 5)
     #C = Circle(I, min(h / 2, (L + R) / 2))
     C = Oval(pa, pb)
-    C.setFill(color)
-    C.draw(win)
-    
+    if n_children > 0:
+        C.setFill(color)
+    else:
+        C.setFill("green")
+    C.draw(win)    
+
     message = Text(I, node.name)
+    #message.setStyle('bold')    
+    message.setSize(11)
+    message.setTextColor("black")    
     message.draw(win)
     
     return I
@@ -261,30 +269,35 @@ def main(fpath, method):
     
     draw(win, dt.root, 10, 10, WX + 10, h, a, color)
 
-    '''examples = readTestData(ftest)
+    c = input("You want to test with file test (automatic)? Or test by handle? \n 1. With file test \n 2. By handle\n")
 
-    n_test = len(examples)
-    cnt = 0
-    
-    for example in examples:
-        data = example[ : len(example) - 1]
-        ans = dt.predict(data)
-        if (example[-1] == ans): cnt += 1
+    while c != '1' and c != '2':
+    	c = input("Try again")
 
-    accuracy = cnt / n_test
-    print("Accuracy = " + str(accuracy))'''
-    
-    while True:
-        data = input("Enter your test case(press \"exit\" to exit): ")
-        data = data.split()
-        if data[0] == 'exit': break
-        print("Output: " + str(dt.predict(data)))
+    if c == '1':
+        ftest = input("Enter the path of the test file: ")
+        examples = readTestData(ftest)
+        n_test = len(examples)
+        cnt = 0
+        for example in examples:
+            data = example[ : len(example) - 1]
+            ans = dt.predict(data)
+            print("Data test: " + example[-1] + " Model: " + ans)
+            if (example[-1] == ans): cnt += 1
+            accuracy = cnt / n_test
+        print("Accuracy = " + str(accuracy))
+        c = input()
+    else:
+        while True:
+            data = input("Enter your test case(press \"exit\" to exit): ")
+            data = data.split()
+            if data[0] == 'exit': break
+            print("Output: " + str(dt.predict(data)))
 
 fpath = input("Enter the path of file train: ")
 method = input("Enter the method which you use to build the decision tree(quinlan : Quinlan, gain : InformationGain): ")
 while (method != 'quinlan' and method != 'gain'):
     method = input('Try again: ')
-#ftest = input("Enter the path of file test: ")
 main(fpath, method)
 
 
